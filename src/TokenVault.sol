@@ -35,11 +35,11 @@ contract TokenVault is ERC4626 {
         // checks that the caller has more shares than they are trying to withdraw.
         require(shareHolders[msg.sender] >= shares, "Not enough shares");
         // calculate 10% yield on the shares
-        uint256 yield = (shares * 10) / 100;
+        // uint256 yield = (shares * 10) / 100;
         // total amount to be withdrawn
-        uint256 totalAssetAmount = shares + yield;
+        // uint256 totalAssetAmount = shares + yield;
         // calling the redeem function of ERC-4626 to perform all the functionality
-        redeem(totalAssetAmount, receiver, msg.sender);
+        redeem(shares, receiver, msg.sender);
         // Decrease the share of the user
         shareHolders[msg.sender] -= shares;
     }
